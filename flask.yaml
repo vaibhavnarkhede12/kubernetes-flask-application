@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kflask-deployment
+  labels:
+    app: kflask
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kflask
+  template:
+    metadata:
+      labels:
+        app: kflask
+    spec:
+      containers:
+      - name: kflask
+        image: flask:0.1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
